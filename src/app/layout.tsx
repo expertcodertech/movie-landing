@@ -89,7 +89,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/favicon/128x128.png" type="image/png" />
+        <link rel="icon" href="/favicon/128x128.png" sizes="128x128" type="image/png" />
+        <link rel="apple-touch-icon" href="/favicon/200x197.png" />
         <link rel="canonical" href={siteUrl} />
         <meta name="theme-color" content={SEO_CONFIG.themeColor} />
         <meta name="mobile-web-app-capable" content="yes" />

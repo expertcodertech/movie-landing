@@ -177,7 +177,7 @@ export default function Home() {
             <Film className="w-6 h-6 text-[#e50914]" />
             <span className="font-semibold">{CONFIG.siteName}</span>
           </div>
-          <p className="text-gray-500 text-sm">
+          <p className="text-gray-400 text-sm">
             © {new Date().getFullYear()} {CONFIG.siteName}. All rights reserved.
           </p>
         </div>
