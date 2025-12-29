@@ -4,7 +4,7 @@
 
 export const SEO_CONFIG = {
   // Site name (used in footer, logo, etc.)
-  siteName: "Vegamovies",
+  siteName: "Vegamovies | Download Bollywood And South Indian Hindi Dubbed Movies For Free , 9xmovies, Katmoviehd,FilmyzillaVegamovies NL – Discover Bollywood, South & Hollywood Movies",
 
   // Meta Title (max 60 characters recommended)
   title: "Vegamovies | Download Bollywood And South Indian Hindi Dubbed Movies For Free , 9xmovies, Katmoviehd,FilmyzillaVegamovies NL – Discover Bollywood, South & Hollywood Movies",
