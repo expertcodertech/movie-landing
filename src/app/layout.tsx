@@ -9,6 +9,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://yourdomain.com"),
   title: "MovieHub | Latest Movie Reviews, Ratings & Entertainment News",
   description:
     "Discover the latest Bollywood, Hollywood & South Indian movie reviews, ratings, trailers, and entertainment news. Your ultimate destination for film enthusiasts.",
@@ -65,6 +66,20 @@ export const metadata: Metadata = {
   },
 };
 
+// JSON-LD Structured Data
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "MovieHub",
+  description: "Discover the latest Bollywood, Hollywood & South Indian movie reviews, ratings, trailers, and entertainment news.",
+  url: "https://yourdomain.com",
+  potentialAction: {
+    "@type": "SearchAction",
+    target: "https://yourdomain.com/search?q={search_term_string}",
+    "query-input": "required name=search_term_string",
+  },
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -75,6 +90,10 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="canonical" href="https://yourdomain.com" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </head>
       <body className="antialiased">{children}</body>
     </html>

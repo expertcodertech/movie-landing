@@ -1,103 +1,195 @@
-import Image from "next/image";
+import { Film, Star, Play, TrendingUp, Clock, Award } from "./icons";
+
+// Configuration - Change these values
+const CONFIG = {
+  siteName: "MovieHub",
+  tagline: "Your Ultimate Movie Destination",
+  description: "Discover the latest Bollywood, Hollywood & South Indian movie reviews, ratings, trailers, and entertainment news.",
+  redirectUrl: "https://your-main-website.com", // Change to your main website
+  features: [
+    {
+      icon: "star",
+      title: "Expert Reviews",
+      description: "In-depth movie reviews from film critics and enthusiasts",
+    },
+    {
+      icon: "trending",
+      title: "Trending Movies",
+      description: "Stay updated with the hottest releases and box office hits",
+    },
+    {
+      icon: "play",
+      title: "Trailers & Clips",
+      description: "Watch the latest trailers and exclusive movie clips",
+    },
+    {
+      icon: "clock",
+      title: "Release Updates",
+      description: "Never miss a release with our comprehensive movie calendar",
+    },
+  ],
+  stats: [
+    { value: "10K+", label: "Movie Reviews" },
+    { value: "500+", label: "New Releases" },
+    { value: "1M+", label: "Monthly Visitors" },
+  ],
+};
+
+function getIcon(name: string) {
+  const icons: Record<string, React.ReactNode> = {
+    star: <Star />,
+    trending: <TrendingUp />,
+    play: <Play />,
+    clock: <Clock />,
+  };
+  return icons[name] || <Film />;
+}
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
+    <main className="min-h-screen">
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center justify-center px-4 py-20">
+        {/* Background gradient */}
+        <div 
+          className="absolute inset-0 bg-gradient-to-br from-[#1a0a0a] via-[#0a0a0a] to-[#0a0a1a]"
+          aria-hidden="true"
         />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
+        <div 
+          className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-red-900/20 via-transparent to-transparent"
+          aria-hidden="true"
+        />
+        
+        <div className="relative z-10 max-w-4xl mx-auto text-center animate-fade-in">
+          {/* Logo/Brand */}
+          <div className="flex items-center justify-center gap-3 mb-6">
+            <Film className="w-12 h-12 text-[#e50914]" />
+            <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
+              {CONFIG.siteName}
+            </h1>
+          </div>
+          
+          {/* Tagline */}
+          <p className="text-xl md:text-2xl text-gray-300 mb-4">
+            {CONFIG.tagline}
+          </p>
+          
+          {/* Description */}
+          <p className="text-gray-400 max-w-2xl mx-auto mb-10 text-lg">
+            {CONFIG.description}
+          </p>
+          
+          {/* CTA Button */}
           <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            href={CONFIG.redirectUrl}
+            className="inline-flex items-center gap-2 bg-[#e50914] hover:bg-[#f40612] text-white font-semibold px-8 py-4 rounded-lg text-lg transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-red-500/25"
+            rel="noopener"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
+            <Play className="w-5 h-5" />
+            Explore Movies
           </a>
+          
+          {/* Stats */}
+          <div className="mt-16 grid grid-cols-3 gap-8 max-w-lg mx-auto">
+            {CONFIG.stats.map((stat) => (
+              <div key={stat.label} className="text-center">
+                <p className="text-2xl md:text-3xl font-bold text-white">{stat.value}</p>
+                <p className="text-sm text-gray-400">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+        
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+          <div className="w-6 h-10 border-2 border-gray-600 rounded-full flex justify-center pt-2">
+            <div className="w-1 h-2 bg-gray-400 rounded-full" />
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-20 px-4 bg-[#0d0d0d]" aria-labelledby="features-heading">
+        <div className="max-w-6xl mx-auto">
+          <h2 id="features-heading" className="text-3xl md:text-4xl font-bold text-center mb-4">
+            Why Choose Us?
+          </h2>
+          <p className="text-gray-400 text-center mb-12 max-w-2xl mx-auto">
+            Everything you need to stay updated with the world of cinema
+          </p>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {CONFIG.features.map((feature, index) => (
+              <article
+                key={feature.title}
+                className="bg-[#141414] border border-[#2a2a2a] rounded-xl p-6 hover:border-[#e50914]/50 transition-colors duration-300 animate-slide-up"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <div className="w-12 h-12 bg-[#e50914]/10 rounded-lg flex items-center justify-center mb-4 text-[#e50914]">
+                  {getIcon(feature.icon)}
+                </div>
+                <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
+                <p className="text-gray-400 text-sm">{feature.description}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Categories Section */}
+      <section className="py-20 px-4" aria-labelledby="categories-heading">
+        <div className="max-w-6xl mx-auto">
+          <h2 id="categories-heading" className="text-3xl md:text-4xl font-bold text-center mb-12">
+            Browse by Category
+          </h2>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {["Bollywood", "Hollywood", "South Indian", "Web Series"].map((category) => (
+              <a
+                key={category}
+                href={CONFIG.redirectUrl}
+                className="group relative overflow-hidden rounded-xl bg-gradient-to-br from-[#1a1a1a] to-[#0d0d0d] border border-[#2a2a2a] p-8 text-center hover:border-[#e50914] transition-all duration-300"
+                rel="noopener"
+              >
+                <Award className="w-8 h-8 mx-auto mb-3 text-[#e50914] group-hover:scale-110 transition-transform" />
+                <h3 className="font-semibold">{category}</h3>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA Section */}
+      <section className="py-20 px-4 bg-gradient-to-t from-[#1a0505] to-transparent">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            Ready to Explore?
+          </h2>
+          <p className="text-gray-400 mb-8">
+            Join millions of movie enthusiasts and discover your next favorite film
+          </p>
           <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            href={CONFIG.redirectUrl}
+            className="inline-flex items-center gap-2 bg-[#e50914] hover:bg-[#f40612] text-white font-semibold px-10 py-4 rounded-lg text-lg transition-all duration-300 hover:scale-105"
+            rel="noopener"
           >
-            Read our docs
+            Visit Main Site
           </a>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-8 px-4 border-t border-[#2a2a2a]">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-2">
+            <Film className="w-6 h-6 text-[#e50914]" />
+            <span className="font-semibold">{CONFIG.siteName}</span>
+          </div>
+          <p className="text-gray-500 text-sm">
+            © {new Date().getFullYear()} {CONFIG.siteName}. All rights reserved.
+          </p>
+        </div>
       </footer>
-    </div>
+    </main>
   );
 }
