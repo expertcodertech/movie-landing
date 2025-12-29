@@ -48,7 +48,7 @@ export const SEO_CONFIG = {
   ogImage: "/og-image.webp",
 
   // Google Search Console verification code
-  googleVerification: "your-google-verification-code",
+  googleVerification: "Lph2OPlWs7GdMyR1TOBkqsuRZR6_hRoGC7RLK-kfQXU",
 
   // Theme color (used in browser tab) 
   themeColor: "#e50914",
