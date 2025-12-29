@@ -49,25 +49,19 @@ function getIcon(name: string) {
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 py-20">
-        <div
-          className="absolute inset-0 bg-gradient-to-br from-[#1a0a0a] via-[#0a0a0a] to-[#0a0a1a]"
-          aria-hidden="true"
-        />
+    <main className="min-h-screen bg-[#0a0a0a]">
+      {/* Hero Section - LCP optimized */}
+      <section className="relative min-h-screen flex items-center justify-center px-4 py-20 bg-gradient-to-br from-[#1a0a0a] via-[#0a0a0a] to-[#0a0a1a]">
         <div
           className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-red-900/20 via-transparent to-transparent"
           aria-hidden="true"
         />
 
-        <div className="relative z-10 max-w-4xl mx-auto text-center animate-fade-in">
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <Film className="w-12 h-12 text-[#e50914]" />
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
-              {CONFIG.siteName}
-            </h1>
-          </div>
+        <div className="relative z-10 max-w-4xl mx-auto text-center">
+          {/* LCP Element - Large visible text */}
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-6">
+            {CONFIG.siteName}
+          </h1>
 
           <p className="text-xl md:text-2xl text-gray-300 mb-4">
             {CONFIG.tagline}
@@ -79,7 +73,7 @@ export default function Home() {
 
           <a
             href={CONFIG.redirectUrl}
-            className="inline-flex items-center gap-2 bg-[#e50914] hover:bg-[#f40612] text-white font-semibold px-8 py-4 rounded-lg text-lg transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-red-500/25"
+            className="inline-flex items-center gap-2 bg-[#e50914] hover:bg-[#f40612] text-white font-semibold px-8 py-4 rounded-lg text-lg transition-colors duration-200"
           >
             <Play className="w-5 h-5" />
             Explore Movies
@@ -96,12 +90,6 @@ export default function Home() {
             ))}
           </div>
         </div>
-
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-          <div className="w-6 h-10 border-2 border-gray-600 rounded-full flex justify-center pt-2">
-            <div className="w-1 h-2 bg-gray-400 rounded-full" />
-          </div>
-        </div>
       </section>
 
       {/* Features Section */}
@@ -115,11 +103,10 @@ export default function Home() {
           </p>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {CONFIG.features.map((feature, index) => (
+            {CONFIG.features.map((feature) => (
               <article
                 key={feature.title}
-                className="bg-[#141414] border border-[#2a2a2a] rounded-xl p-6 hover:border-[#e50914]/50 transition-colors duration-300 animate-slide-up"
-                style={{ animationDelay: `${index * 100}ms` }}
+                className="bg-[#141414] border border-[#2a2a2a] rounded-xl p-6 hover:border-[#e50914]/50 transition-colors duration-200"
               >
                 <div className="w-12 h-12 bg-[#e50914]/10 rounded-lg flex items-center justify-center mb-4 text-[#e50914]">
                   {getIcon(feature.icon)}
@@ -133,7 +120,7 @@ export default function Home() {
       </section>
 
       {/* Categories Section */}
-      <section className="py-20 px-4" aria-labelledby="categories-heading">
+      <section className="py-20 px-4 bg-[#0a0a0a]" aria-labelledby="categories-heading">
         <div className="max-w-6xl mx-auto">
           <h2 id="categories-heading" className="text-3xl md:text-4xl font-bold text-center mb-12">
             Browse by Category
@@ -144,9 +131,9 @@ export default function Home() {
               <a
                 key={category}
                 href={CONFIG.redirectUrl}
-                className="group relative overflow-hidden rounded-xl bg-gradient-to-br from-[#1a1a1a] to-[#0d0d0d] border border-[#2a2a2a] p-8 text-center hover:border-[#e50914] transition-all duration-300"
+                className="group rounded-xl bg-[#141414] border border-[#2a2a2a] p-8 text-center hover:border-[#e50914] transition-colors duration-200"
               >
-                <Award className="w-8 h-8 mx-auto mb-3 text-[#e50914] group-hover:scale-110 transition-transform" />
+                <Award className="w-8 h-8 mx-auto mb-3 text-[#e50914]" />
                 <h3 className="font-semibold">{category}</h3>
               </a>
             ))}
@@ -155,7 +142,7 @@ export default function Home() {
       </section>
 
       {/* Final CTA Section */}
-      <section className="py-20 px-4 bg-gradient-to-t from-[#1a0505] to-transparent">
+      <section className="py-20 px-4 bg-[#0d0d0d]">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Discover?</h2>
           <p className="text-gray-400 mb-8">
@@ -163,7 +150,7 @@ export default function Home() {
           </p>
           <a
             href={CONFIG.redirectUrl}
-            className="inline-flex items-center gap-2 bg-[#e50914] hover:bg-[#f40612] text-white font-semibold px-10 py-4 rounded-lg text-lg transition-all duration-300 hover:scale-105"
+            className="inline-flex items-center gap-2 bg-[#e50914] hover:bg-[#f40612] text-white font-semibold px-10 py-4 rounded-lg text-lg transition-colors duration-200"
           >
             Start Exploring
           </a>
@@ -171,7 +158,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="py-8 px-4 border-t border-[#2a2a2a]">
+      <footer className="py-8 px-4 border-t border-[#2a2a2a] bg-[#0a0a0a]">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <Film className="w-6 h-6 text-[#e50914]" />
