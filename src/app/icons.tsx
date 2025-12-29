@@ -1,4 +1,4 @@
-// Lightweight SVG icons - no external dependencies
+// Lightweight SVG icons - no external dependencies 
 interface IconProps {
   className?: string;
 }

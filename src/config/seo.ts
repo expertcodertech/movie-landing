@@ -50,7 +50,7 @@ export const SEO_CONFIG = {
   // Google Search Console verification code
   googleVerification: "your-google-verification-code",
 
-  // Theme color (used in browser tab)
+  // Theme color (used in browser tab) 
   themeColor: "#e50914",
 
   // Locale
