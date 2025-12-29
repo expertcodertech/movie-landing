@@ -5,6 +5,11 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   compress: true,
   
+  // Target modern browsers only (reduces polyfills)
+  experimental: {
+    optimizePackageImports: ["@vercel/analytics", "@vercel/speed-insights"],
+  },
+  
   // Image optimization
   images: {
     formats: ["image/avif", "image/webp"],
