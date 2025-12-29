@@ -59,7 +59,7 @@ export default function Home() {
 
         <div className="relative z-10 max-w-4xl mx-auto text-center">
           {/* LCP Element - Large visible text */}
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-6">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white mb-6">
             {CONFIG.siteName}
           </h1>
 
