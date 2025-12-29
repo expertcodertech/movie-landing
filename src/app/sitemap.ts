@@ -1,13 +1,13 @@
 import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://yourdomain.com"; // Change to your domain
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://vegamoviesnl.info";
 
   return [
     {
-      url: baseUrl,
+      url: siteUrl,
       lastModified: new Date(),
-      changeFrequency: "weekly",
+      changeFrequency: "daily",
       priority: 1,
     },
   ];

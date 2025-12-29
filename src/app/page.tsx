@@ -1,37 +1,39 @@
 import { Film, Star, Play, TrendingUp, Clock, Award } from "./icons";
+import { SEO_CONFIG } from "@/config/seo";
 
-// Configuration - Change these values
+const redirectUrl = process.env.NEXT_PUBLIC_REDIRECT_URL || "https://vegamoviesnl.info";
+
 const CONFIG = {
-  siteName: "MovieHub",
-  tagline: "Your Ultimate Movie Destination",
-  description: "Discover the latest Bollywood, Hollywood & South Indian movie reviews, ratings, trailers, and entertainment news.",
-  redirectUrl: "https://your-main-website.com", // Change to your main website
+  siteName: SEO_CONFIG.siteName,
+  tagline: "Your Movie Discovery Platform",
+  description: SEO_CONFIG.description,
+  redirectUrl,
   features: [
     {
       icon: "star",
-      title: "Expert Reviews",
-      description: "In-depth movie reviews from film critics and enthusiasts",
+      title: "Ratings & Reviews",
+      description: "Comprehensive ratings and reviews from critics and audiences",
     },
     {
       icon: "trending",
       title: "Trending Movies",
-      description: "Stay updated with the hottest releases and box office hits",
+      description: "Stay updated with the latest releases and popular films",
     },
     {
       icon: "play",
       title: "Trailers & Clips",
-      description: "Watch the latest trailers and exclusive movie clips",
+      description: "Watch official trailers and exclusive movie clips",
     },
     {
       icon: "clock",
-      title: "Release Updates",
-      description: "Never miss a release with our comprehensive movie calendar",
+      title: "Streaming Availability",
+      description: "Find where to watch movies on legal OTT platforms",
     },
   ],
   stats: [
-    { value: "10K+", label: "Movie Reviews" },
-    { value: "500+", label: "New Releases" },
-    { value: "1M+", label: "Monthly Visitors" },
+    { value: "10K+", label: "Movies Listed" },
+    { value: "50+", label: "OTT Platforms" },
+    { value: "1M+", label: "Monthly Users" },
   ],
 };
 
@@ -50,57 +52,51 @@ export default function Home() {
     <main className="min-h-screen">
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center px-4 py-20">
-        {/* Background gradient */}
-        <div 
+        <div
           className="absolute inset-0 bg-gradient-to-br from-[#1a0a0a] via-[#0a0a0a] to-[#0a0a1a]"
           aria-hidden="true"
         />
-        <div 
+        <div
           className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-red-900/20 via-transparent to-transparent"
           aria-hidden="true"
         />
-        
+
         <div className="relative z-10 max-w-4xl mx-auto text-center animate-fade-in">
-          {/* Logo/Brand */}
           <div className="flex items-center justify-center gap-3 mb-6">
             <Film className="w-12 h-12 text-[#e50914]" />
             <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
               {CONFIG.siteName}
             </h1>
           </div>
-          
-          {/* Tagline */}
+
           <p className="text-xl md:text-2xl text-gray-300 mb-4">
             {CONFIG.tagline}
           </p>
-          
-          {/* Description */}
+
           <p className="text-gray-400 max-w-2xl mx-auto mb-10 text-lg">
             {CONFIG.description}
           </p>
-          
-          {/* CTA Button */}
+
           <a
             href={CONFIG.redirectUrl}
             className="inline-flex items-center gap-2 bg-[#e50914] hover:bg-[#f40612] text-white font-semibold px-8 py-4 rounded-lg text-lg transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-red-500/25"
-            rel="noopener"
           >
             <Play className="w-5 h-5" />
             Explore Movies
           </a>
-          
-          {/* Stats */}
+
           <div className="mt-16 grid grid-cols-3 gap-8 max-w-lg mx-auto">
             {CONFIG.stats.map((stat) => (
               <div key={stat.label} className="text-center">
-                <p className="text-2xl md:text-3xl font-bold text-white">{stat.value}</p>
+                <p className="text-2xl md:text-3xl font-bold text-white">
+                  {stat.value}
+                </p>
                 <p className="text-sm text-gray-400">{stat.label}</p>
               </div>
             ))}
           </div>
         </div>
-        
-        {/* Scroll indicator */}
+
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
           <div className="w-6 h-10 border-2 border-gray-600 rounded-full flex justify-center pt-2">
             <div className="w-1 h-2 bg-gray-400 rounded-full" />
@@ -115,9 +111,9 @@ export default function Home() {
             Why Choose Us?
           </h2>
           <p className="text-gray-400 text-center mb-12 max-w-2xl mx-auto">
-            Everything you need to stay updated with the world of cinema
+            Everything you need to discover and explore movies from around the world
           </p>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {CONFIG.features.map((feature, index) => (
               <article
@@ -142,14 +138,13 @@ export default function Home() {
           <h2 id="categories-heading" className="text-3xl md:text-4xl font-bold text-center mb-12">
             Browse by Category
           </h2>
-          
+
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {["Bollywood", "Hollywood", "South Indian", "Web Series"].map((category) => (
               <a
                 key={category}
                 href={CONFIG.redirectUrl}
                 className="group relative overflow-hidden rounded-xl bg-gradient-to-br from-[#1a1a1a] to-[#0d0d0d] border border-[#2a2a2a] p-8 text-center hover:border-[#e50914] transition-all duration-300"
-                rel="noopener"
               >
                 <Award className="w-8 h-8 mx-auto mb-3 text-[#e50914] group-hover:scale-110 transition-transform" />
                 <h3 className="font-semibold">{category}</h3>
@@ -162,18 +157,15 @@ export default function Home() {
       {/* Final CTA Section */}
       <section className="py-20 px-4 bg-gradient-to-t from-[#1a0505] to-transparent">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Ready to Explore?
-          </h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Discover?</h2>
           <p className="text-gray-400 mb-8">
-            Join millions of movie enthusiasts and discover your next favorite film
+            Find your next favorite movie and where to stream it legally
           </p>
           <a
             href={CONFIG.redirectUrl}
             className="inline-flex items-center gap-2 bg-[#e50914] hover:bg-[#f40612] text-white font-semibold px-10 py-4 rounded-lg text-lg transition-all duration-300 hover:scale-105"
-            rel="noopener"
           >
-            Visit Main Site
+            Start Exploring
           </a>
         </div>
       </section>

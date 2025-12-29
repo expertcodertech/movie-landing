@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { SEO_CONFIG } from "@/config/seo";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -8,24 +9,16 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://vegamoviesnl.info";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://yourdomain.com"),
-  title: "MovieHub | Latest Movie Reviews, Ratings & Entertainment News",
-  description:
-    "Discover the latest Bollywood, Hollywood & South Indian movie reviews, ratings, trailers, and entertainment news. Your ultimate destination for film enthusiasts.",
-  keywords: [
-    "movie reviews",
-    "bollywood movies",
-    "hollywood movies",
-    "south indian movies",
-    "movie ratings",
-    "film reviews",
-    "entertainment news",
-    "movie trailers",
-  ],
-  authors: [{ name: "MovieHub" }],
-  creator: "MovieHub",
-  publisher: "MovieHub",
+  metadataBase: new URL(siteUrl),
+  title: SEO_CONFIG.title,
+  description: SEO_CONFIG.description,
+  keywords: SEO_CONFIG.keywords,
+  authors: [{ name: SEO_CONFIG.siteName }],
+  creator: SEO_CONFIG.siteName,
+  publisher: SEO_CONFIG.siteName,
   robots: {
     index: true,
     follow: true,
@@ -38,31 +31,32 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: "your-google-verification-code",
+    google: SEO_CONFIG.googleVerification,
   },
   openGraph: {
     type: "website",
-    locale: "en_IN",
-    url: "https://yourdomain.com",
-    siteName: "MovieHub",
-    title: "MovieHub | Latest Movie Reviews, Ratings & Entertainment News",
-    description:
-      "Discover the latest Bollywood, Hollywood & South Indian movie reviews, ratings, trailers, and entertainment news.",
+    locale: SEO_CONFIG.locale,
+    url: siteUrl,
+    siteName: SEO_CONFIG.siteName,
+    title: SEO_CONFIG.title,
+    description: SEO_CONFIG.description,
     images: [
       {
-        url: "/og-image.png",
+        url: SEO_CONFIG.ogImage,
         width: 1200,
         height: 630,
-        alt: "MovieHub - Your Movie Destination",
+        alt: `${SEO_CONFIG.siteName} - Movie Discovery Platform`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "MovieHub | Latest Movie Reviews & Entertainment",
-    description:
-      "Discover the latest movie reviews, ratings, trailers, and entertainment news.",
-    images: ["/og-image.png"],
+    title: SEO_CONFIG.title,
+    description: SEO_CONFIG.description,
+    images: [SEO_CONFIG.ogImage],
+  },
+  alternates: {
+    canonical: siteUrl,
   },
 };
 
@@ -70,13 +64,18 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: "MovieHub",
-  description: "Discover the latest Bollywood, Hollywood & South Indian movie reviews, ratings, trailers, and entertainment news.",
-  url: "https://yourdomain.com",
+  name: SEO_CONFIG.siteName,
+  description: SEO_CONFIG.description,
+  url: siteUrl,
   potentialAction: {
     "@type": "SearchAction",
-    target: "https://yourdomain.com/search?q={search_term_string}",
+    target: `${siteUrl}/search?q={search_term_string}`,
     "query-input": "required name=search_term_string",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: SEO_CONFIG.siteName,
+    url: siteUrl,
   },
 };
 
@@ -89,7 +88,11 @@ export default function RootLayout({
     <html lang="en" className={inter.variable}>
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="canonical" href="https://yourdomain.com" />
+        <link rel="canonical" href={siteUrl} />
+        <meta name="theme-color" content={SEO_CONFIG.themeColor} />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
