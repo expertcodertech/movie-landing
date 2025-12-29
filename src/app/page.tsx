@@ -31,7 +31,7 @@ const CONFIG = {
     },
   ],
   stats: [
-    { value: "10K+", label: "Movies Listed" },
+    { value: "15K+", label: "Movies Listed" },
     { value: "50+", label: "OTT Platforms" },
     { value: "1M+", label: "Monthly Users" },
   ],
