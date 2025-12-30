@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Film, Star, Play, TrendingUp, Clock, Award } from "./icons";
 import { SEO_CONFIG } from "@/config/seo";
 
@@ -54,9 +55,9 @@ export default function Home() {
       <nav aria-label="Breadcrumb" className="bg-[#0a0a0a] px-4 py-3 border-b border-[#1a1a1a]">
         <ol className="max-w-6xl mx-auto flex items-center gap-2 text-sm">
           <li>
-            <a href="/" className="text-[#e50914] hover:underline font-medium">
+            <Link href="/" className="text-[#e50914] hover:underline font-medium">
               Home
-            </a>
+            </Link>
           </li>
         </ol>
       </nav>
