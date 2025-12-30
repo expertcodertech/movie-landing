@@ -66,20 +66,62 @@ export const metadata: Metadata = {
 // JSON-LD Structured Data
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "WebSite",
-  name: SEO_CONFIG.siteName,
-  description: SEO_CONFIG.description,
-  url: siteUrl,
-  potentialAction: {
-    "@type": "SearchAction",
-    target: `${siteUrl}/search?q={search_term_string}`,
-    "query-input": "required name=search_term_string",
-  },
-  publisher: {
-    "@type": "Organization",
-    name: SEO_CONFIG.siteName,
-    url: siteUrl,
-  },
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${siteUrl}/#website`,
+      name: SEO_CONFIG.siteName,
+      description: SEO_CONFIG.description,
+      url: siteUrl,
+      potentialAction: {
+        "@type": "SearchAction",
+        target: `${siteUrl}/search?q={search_term_string}`,
+        "query-input": "required name=search_term_string",
+      },
+      publisher: {
+        "@id": `${siteUrl}/#organization`,
+      },
+    },
+    {
+      "@type": "Organization",
+      "@id": `${siteUrl}/#organization`,
+      name: SEO_CONFIG.siteName,
+      url: siteUrl,
+      logo: {
+        "@type": "ImageObject",
+        url: `${siteUrl}/favicon/128x128.png`,
+      },
+    },
+    {
+      "@type": "WebPage",
+      "@id": `${siteUrl}/#webpage`,
+      url: siteUrl,
+      name: SEO_CONFIG.title,
+      description: SEO_CONFIG.description,
+      isPartOf: {
+        "@id": `${siteUrl}/#website`,
+      },
+      about: {
+        "@id": `${siteUrl}/#organization`,
+      },
+      primaryImageOfPage: {
+        "@type": "ImageObject",
+        url: `${siteUrl}${SEO_CONFIG.ogImage}`,
+      },
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${siteUrl}/#breadcrumb`,
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: siteUrl,
+        },
+      ],
+    },
+  ],
 };
 
 export default function RootLayout({

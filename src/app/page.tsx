@@ -50,6 +50,17 @@ function getIcon(name: string) {
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#0a0a0a]">
+      {/* Breadcrumb Navigation */}
+      <nav aria-label="Breadcrumb" className="bg-[#0a0a0a] px-4 py-3 border-b border-[#1a1a1a]">
+        <ol className="max-w-6xl mx-auto flex items-center gap-2 text-sm">
+          <li>
+            <a href="/" className="text-[#e50914] hover:underline font-medium">
+              Home
+            </a>
+          </li>
+        </ol>
+      </nav>
+
       {/* Hero Section */}
       <section className="relative min-h-[80vh] sm:min-h-screen flex items-center justify-center px-4 py-12 sm:py-20 bg-gradient-to-br from-[#1a0a0a] via-[#0a0a0a] to-[#0a0a1a]">
         <div
